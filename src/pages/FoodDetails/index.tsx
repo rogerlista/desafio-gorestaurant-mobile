@@ -109,7 +109,18 @@ const FoodDetails: React.FC = () => {
   }
 
   function handleDecrementExtra(id: number): void {
-    // Decrement extra quantity
+    const updateQuantityExtras = extras.map(extra => {
+      if (extra.id === id) {
+        return {
+          ...extra,
+          quantity: extra.quantity > 1 ? extra.quantity - 1 : 1,
+        };
+      }
+
+      return extra;
+    });
+
+    setExtras(updateQuantityExtras);
   }
 
   function handleIncrementFood(): void {
